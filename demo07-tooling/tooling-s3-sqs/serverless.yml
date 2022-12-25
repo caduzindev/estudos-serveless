@@ -1,0 +1,25 @@
+service: tooling-s3-sqs
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+
+plugins:
+  - serverless-localstack
+  - serverless-mocha-plugin
+  - serverless-offline
+
+custom:
+  localstack:
+    stages:
+      - local
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - http:
+          method: get
+          path: hello

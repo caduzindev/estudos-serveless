@@ -1,0 +1,70 @@
+service: tooling-s3-sqs
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  stage: ${opt:stage, "dev"}
+  region: us-east-1
+  environment:
+    BUCKET_NAME: arquivos-009-carlos
+    SQS_QUEUE: file-handler
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - sqs:SendMessage
+            - sqs:GetQueueUrl
+            - sqs:CreateQueue
+            - sqs:ReceiveMessage
+          Resource: ${self:custom.sqsArn}
+        - Effect: Allow
+          Action:
+            - s3:*
+          Resource:
+            - arn:aws:s3:::${self.provider.environment.BUCKET_NAME}/*
+            - arn:aws:s3:::${self.provider.environment.BUCKET_NAME}
+
+plugins:
+  - serverless-localstack
+  - serverless-offline
+
+custom:
+  sqsArn:
+    Fn::GetAtt:
+      - SQSQueue
+      - Arn
+  localstack:
+    stages:
+      - local
+    autostart: false
+
+package:
+  individually: true
+  excludeDevDependencies: true
+
+functions:
+  s3Listener:
+    handler: src/index.s3Listener
+    events:
+      - s3:
+          bucket: ${self:provider.environment.BUCKET_NAME}
+          event: s3:ObjectCreated:*
+          rules:
+            - suffix: .csv
+  sqsListener:
+    handler: src/index.sqsListener
+    events:
+      - sqs:
+          batchSize: 1
+          arn: ${self:custom.sqsArn}
+
+resources:
+  Resources:
+    SQSQueue:
+      Type: AWS::SQS::Queue
+      Properties:
+        QueueName: ${self:provider.environment.SQS_QUEUE}
+        VisibilityTimeout: 60

@@ -1,0 +1,40 @@
+{
+  "Records": [
+    {
+      "eventID": "d49d1d1be6ba8181fcc31d646077b8ac",
+      "eventName": "INSERT",
+      "eventVersion": "1.1",
+      "eventSource": "aws:dynamodb",
+      "awsRegion": "us-east-1",
+      "dynamodb": {
+        "ApproximateCreationDateTime": 1667591502,
+        "Keys": {
+          "nome": {
+            "S": "jose"
+          },
+          "id": {
+            "S": "7fe7cfab-fd1d-4e97-ba34-5bfb79afdb08"
+          }
+        },
+        "NewImage": {
+          "createdAt": {
+            "S": "2022-11-04T19:51:42.139Z"
+          },
+          "nome": {
+            "S": "jose"
+          },
+          "id": {
+            "S": "7fe7cfab-fd1d-4e97-ba34-5bfb79afdb08"
+          },
+          "poder": {
+            "S": "superforça"
+          }
+        },
+        "SequenceNumber": "335800000000013096688088",
+        "SizeBytes": 141,
+        "StreamViewType": "NEW_AND_OLD_IMAGES"
+      },
+      "eventSourceARN": "arn:aws:dynamodb:us-east-1:621450410267:table/Heroes/stream/2022-11-04T19:48:23.759"
+    }
+  ]
+}

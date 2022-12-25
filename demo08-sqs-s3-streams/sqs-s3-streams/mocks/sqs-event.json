@@ -1,0 +1,20 @@
+{
+  "Records": [
+    {
+      "messageId": "119eefb2-709b-4a5d-9fa8-46515dcf1ab3",
+      "receiptHandle": "AQEBayD6/EDLSvt32Z74l5jlEVtGDgcmjow270lRTp7BSBwVPj1rV4Hy+sh5Kmxv/5vr4vrqLJjZijfbF6FjZErGgvmy6aK9O6y6qFYSLVtmWcCcnsoL4K1265/WlWQI5G8VOKRemGMWZ8BDs7DBKhL8xqWGYVV9BMqTw7BY0t25kKIfrL02LiGINz8BXtFLbGVjFBwRn74lDXNDyIpdsLODAEKxPgzC3IeSkwZpVyBoCHf4oua4bAbKntXlyfSnz+9QTwsasS5H8PuCXo3DoEEsV/4Q4tF+5MBeSfQFxTqvyUP8Y2gxPj1WDo9hH43CMElCEIuO4WwGGIexF578Up/qLqrzi4EVe/+wmbEBGmf94oBsqv3gcigARQk8avvFOFZQVlPexz6tVFNz+up3fECV5g==",
+      "body": "Opa bão",
+      "attributes": {
+        "ApproximateReceiveCount": "1",
+        "SentTimestamp": "1671589003754",
+        "SenderId": "AIDAZBMKUXENU4J7TEQ5L",
+        "ApproximateFirstReceiveTimestamp": "1671589003797"
+      },
+      "messageAttributes": {},
+      "md5OfBody": "37238391bfa4bae1d5f729000a2e42ff",
+      "eventSource": "aws:sqs",
+      "eventSourceARN": "arn:aws:sqs:us-east-1:621450410267:file-handler",
+      "awsRegion": "us-east-1"
+    }
+  ]
+}
